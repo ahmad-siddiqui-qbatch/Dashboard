@@ -1,7 +1,7 @@
 <template>
   <div class="v-card">
     <v-card-title>{{ title }}</v-card-title>
-    <h4 class="ps-4 h4 fw-400">{{ calculateTotalValue() }}$</h4>
+    <h4 class="ps-4 h4 fw-400">{{ totalValue }}$</h4>
     <apexchart width="100%" height="250px" :type="chartType" :options="options" :series="series"></apexchart>
   </div>
 </template>
@@ -59,9 +59,7 @@ export default {
         },
         tooltip: {
           y: {
-            formatter: function (val) {
-              return "$" + val.toFixed(2);
-            },
+            formatter: (val) => `$${val.toFixed(2)}`,
           },
         },
         legend: {
@@ -75,11 +73,7 @@ export default {
   },
   methods: {
     calculateTotalValue() {
-      let total = 0;
-      for (const data of this.series) {
-        total += data.data.reduce((sum, value) => sum + value, 0);
-      }
-      return total;
+      return this.series.reduce((total, data) => total + data.data.reduce((sum, value) => sum + value, 0), 0);
     },
     getCategories() {
       if (this.categoryType === 'yearly') {

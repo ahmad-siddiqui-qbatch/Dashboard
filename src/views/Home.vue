@@ -1,6 +1,6 @@
 <template>
   <v-row>
-    <v-col cols="3" class="position-relative">
+    <v-col cols="6" lg="3" class="position-relative">
       <RatingCard
         title="Ratings"
         :ratings="productRatingA"
@@ -9,7 +9,7 @@
       />
       <img class="card-char-img" src="@/assets/media/illustration-1-20d12d31.png" alt="">
     </v-col>
-    <v-col cols="3" class="position-relative">
+    <v-col cols="6" lg="3" class="position-relative">
       <RatingCard
         title="Sessions"
         :ratings="productRatingB"
@@ -18,19 +18,19 @@
       />
       <img class="card-char-img" src="@/assets/media/illustration-2-042b082c.png" alt="">
     </v-col>
-    <v-col cols="6">
+    <v-col cols="4" lg="6" >
       <TransactionCard :transactions="transactions" />
     </v-col>
-    <v-col cols="3">
+    <v-col cols="8" lg="3">
       <SalesChart :series="chartDataA" :totalValue="yearlyTotal" title="Total Sales" category-type="yearly" chartType="line"/>
     </v-col>
-    <v-col cols="3">
+    <v-col cols="6" md="6" lg="3">
       <RevenueChart title="Revenue Report" :earningData="earningDataA" :expenseData="expenseDataA"/>
     </v-col>
-    <v-col cols="6">
+    <v-col cols="12" md="6">
       <SalesChart :series="chartDataB" :totalValue="weeklyTotal" title="Weekly Sales" category-type="weekly" chartType="bar"/>
     </v-col>
-    <v-col cols="6">
+    <v-col cols="12" lg="6">
       <TimelineCard/>
     </v-col>
   </v-row>
@@ -72,21 +72,23 @@ export default {
       productRatingB: 2500,
       percentageB: -30,
       chipB: 'Last Week',
-
+      // Data for Total Sales
       chartDataA: [
         {
           name: 'Sales',
-          data: [300, 1400, 5000, 4000, 9000, 2500],
+          data: [300, 300, 200, 3200, 2600, 1000, 3200, 2700, 300, 3200],
         },
       ],
+      // Data for Revenue report
+      earningDataA: [31000, 42000, 40000, 42000, 42000, 10900, 10000],
+      expenseDataA: [11000, 32000, 30000, 32000, 34000, 5200, 4100],
+      // Data for Weekly Sales
       chartDataB: [
         {
           name: 'Sales',
           data: [700, 1000, 3000, 2000, 5000, 2500],
         },
       ],
-      earningDataA: [31000, 42000, 28000, 51000, 42000, 10900, 10000],
-      expenseDataA: [11000, 32000, 27000, 32000, 34000, 5200, 4100],
     };
   },
   computed: {

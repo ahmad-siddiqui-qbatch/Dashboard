@@ -5,7 +5,7 @@
       <v-col
         v-for="(transaction, index) in transactions"
         :key="index"
-        cols="4"
+        cols="12" lg="4"
       >
         <div class="d-flex align-center">
           <v-avatar
