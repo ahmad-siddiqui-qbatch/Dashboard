@@ -1,0 +1,23 @@
+
+#app {
+  .v-application {
+    background: $bg-light;
+    .v-application__wrap {
+      flex-direction: row;
+    }
+  }
+  .v-row{
+    padding: var(--spacing-6);
+  }
+  .v-card{
+    background-color: var(--white);
+    flex-direction: column;
+    justify-content: center;
+    padding: var(--spacing-2);
+    height: 100%;
+    @include box-shadow-medium;
+  }
+}
+
+
+

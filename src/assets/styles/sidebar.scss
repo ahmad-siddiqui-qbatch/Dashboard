@@ -1,0 +1,33 @@
+aside {
+  .v-navigation-drawer {
+    background: $bg-light;
+    padding-right: var(--spacing-2);
+  }
+  .v-list-item-title {
+    line-height: 1.5;
+  }
+  
+  .v-list .v-list-item {
+    border-radius: 0 50px 50px 0;
+    margin: var(--spacing-1) 0;
+    color: #000;
+    &.v-list-item--active {
+      background: #9156fe;
+      background: linear-gradient(135deg, rgb(199, 172, 250) 0%, rgba(145, 86, 254, 1) 70%);
+      border-radius: 0 50px 50px 0;
+      color: #fff;
+      @include box-shadow-light;
+    }
+    .v-icon{
+      margin-right: var(--spacing-3);
+    }
+  }
+  .v-list .v-list-group__header {
+    &.v-list-item--active {
+      background: #e4e4e4;
+      border-radius: 0 50px 50px 0;
+      color: #000;
+      box-shadow: none;
+    }
+  }
+}
