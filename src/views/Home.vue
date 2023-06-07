@@ -22,13 +22,13 @@
       <TransactionCard :transactions="transactions" />
     </v-col>
     <v-col cols="3">
-      <SalesChart :series="chartDataA" :total-value="getTotalValue" title="Total Sales"/>
+      <SalesChart :series="chartDataA" :totalValue="yearlyTotal" title="Total Sales" category-type="yearly" chartType="line"/>
     </v-col>
     <v-col cols="3">
       <RevenueChart title="Revenue Report" :earningData="earningDataA" :expenseData="expenseDataA"/>
     </v-col>
     <v-col cols="6">
-      <div class="v-card"></div>
+      <SalesChart :series="chartDataB" :totalValue="weeklyTotal" title="Weekly Sales" category-type="weekly" chartType="bar"/>
     </v-col>
     <v-col cols="6">
       <TimelineCard/>
@@ -39,7 +39,6 @@
 <script>
 import TransactionCard from "@/components/TransactionCard.vue";
 import RatingCard from "@/components/RatingCard.vue";
-import CustomChip from "@/components/CustomChip.vue";
 import SalesChart from "@/components/charts/SalesChart.vue";
 import RevenueChart from "@/components/charts/RevenueChart.vue";
 import TimelineCard from "@/components/TimelineCard.vue";
@@ -80,26 +79,30 @@ export default {
           data: [300, 1400, 5000, 4000, 9000, 2500],
         },
       ],
-      earningDataA : [31000, 42000, 28000, 51000, 42000, 10900, 10000],
-      expenseDataA : [11000, 32000, 27000, 32000, 34000, 5200, 4100],
+      chartDataB: [
+        {
+          name: 'Sales',
+          data: [700, 1000, 3000, 2000, 5000, 2500],
+        },
+      ],
+      earningDataA: [31000, 42000, 28000, 51000, 42000, 10900, 10000],
+      expenseDataA: [11000, 32000, 27000, 32000, 34000, 5200, 4100],
     };
   },
   computed: {
-    getTotalValue() {
-      if (this.chartDataA && this.chartDataA.length > 0) {
-        return this.chartDataA[0].data.reduce((total, dataPoint) => total + dataPoint, 0);
-      } else {
-        return 0;
-      }
+    yearlyTotal() {
+      return this.chartDataA[0].data.reduce((total, dataPoint) => total + dataPoint, 0);
+    },
+    weeklyTotal() {
+      return this.chartDataB[0].data.reduce((total, dataPoint) => total + dataPoint, 0);
     },
   },
   components: {
     TransactionCard,
     RatingCard,
-    CustomChip,
     SalesChart,
     RevenueChart,
-    TimelineCard
+    TimelineCard,
   },
 };
 </script>

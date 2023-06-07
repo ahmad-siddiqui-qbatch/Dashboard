@@ -1,8 +1,8 @@
 <template>
   <div class="v-card">
     <v-card-title>{{ title }}</v-card-title>
-    <h4 class="ps-4 h4 fw-400">{{ totalValue }}$</h4>
-    <apexchart width="100%" height="250px" type="line" :options="options" :series="series"></apexchart>
+    <h4 class="ps-4 h4 fw-400">{{ calculateTotalValue() }}$</h4>
+    <apexchart width="100%" height="250px" :type="chartType" :options="options" :series="series"></apexchart>
   </div>
 </template>
 
@@ -19,9 +19,20 @@ export default {
       default: () => [],
     },
     title: String,
-    'total-value': {
-      type: Number,
-      default: 0,
+    categoryType: {
+      type: String,
+      default: 'yearly',
+      validator: (value) => ['yearly', 'weekly'].includes(value),
+    },
+    chartType: {
+      type: String,
+      default: 'line',
+      validator: (value) => ['line', 'bar'].includes(value),
+    }
+  },
+  computed: {
+    totalValue() {
+      return this.calculateTotalValue();
     },
   },
   data() {
@@ -34,7 +45,7 @@ export default {
           },
         },
         xaxis: {
-          categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+          categories: this.getCategories(),
         },
         yaxis: {
           show: false,
@@ -44,23 +55,42 @@ export default {
           colors: ['#9155fe'],
         },
         grid: {
-          show : false,
+          show: false,
         },
-        legend : {
-          show : false
+        tooltip: {
+          y: {
+            formatter: function (val) {
+              return "$" + val.toFixed(2);
+            },
+          },
+        },
+        legend: {
+          show: false,
+        },
+        dataLabels : {
+          enabled : false
         }
       },
     };
   },
-  computed: {
-  getTotalValue() {
-    if (this.data && this.data.length > 0) {
-      return this.data.reduce((total, dataPoint) => total + dataPoint, 0);
-    } else {
-      return 0;
-    }
+  methods: {
+    calculateTotalValue() {
+      let total = 0;
+      for (const data of this.series) {
+        total += data.data.reduce((sum, value) => sum + value, 0);
+      }
+      return total;
+    },
+    getCategories() {
+      if (this.categoryType === 'yearly') {
+        return ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+      } else if (this.categoryType === 'weekly') {
+        return ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
+      } else {
+        return [];
+      }
+    },
   },
-},
 };
 </script>
 
@@ -72,6 +102,4 @@ export default {
   height: 100%;
   overflow: hidden;
 }
-
-
 </style>
