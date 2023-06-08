@@ -1,7 +1,7 @@
 <template>
   <div class="v-card">
     <v-card-title>{{ title }}</v-card-title>
-    <h4 class="ps-4 h4 fw-400">{{ totalValue }}$</h4>
+    <h4 class="ps-4 font-h4 fw-400">{{ totalValue }}$</h4>
     <apexchart width="100%" height="250px" :type="chartType" :options="options" :series="series"></apexchart>
   </div>
 </template>

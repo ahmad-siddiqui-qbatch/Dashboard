@@ -2,7 +2,7 @@
   <v-card>
     <v-card-title class="mb-6">{{ title }}</v-card-title>
     <div class="d-flex rating-wrapper mb-3">
-      <h4 class="h4 fw-400">{{ formattedRatings }}</h4>
+      <h4 class="font-h4 fw-400">{{ formattedRatings }}</h4>
       <v-card-subtitle  class="ps-2" :class="percentageClass">{{ percentage }}%</v-card-subtitle>
     </div>
     <CustomChip :title="chip" />

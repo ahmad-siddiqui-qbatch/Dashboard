@@ -36,23 +36,23 @@ $fw-300 : 300;
 @import "main.scss";
 
 // Vuetify overrides
-.h1 {
+.font-h1 {
   font-size: var(--font-xxl);
 }
-.h2 {
+.font-h2 {
   font-size: var(--font-xl);
 }
-.h4 {
+.font-h4 {
   font-size: var(--font-md);
   line-height: calc(var(--font-md) + 2px);
 }
-.h5 {
+.font-h5 {
   font-size: var(--font-sm);
 }
-.h6 {
+.font-h6 {
   font-size: var(--font-xs);
 }
-.xs {
+.font-xs {
   font-size: var(--font-xxs);
 }
 
