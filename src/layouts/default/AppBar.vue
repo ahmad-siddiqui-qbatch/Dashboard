@@ -1,12 +1,11 @@
 <template>
-  <aside class="h-100" >
-    <v-navigation-drawer width="280" permanent>
+  <v-navigation-drawer width="280" permanent>
     <v-list v-model="open">
       <v-list-subheader>Apps and Pages</v-list-subheader>
-      <v-list-item prepend-icon="mdi-home" value="home" title="Home"></v-list-item>
-      <v-list-item prepend-icon="mdi-email" value="email" title="Email"></v-list-item>
-      <v-list-item prepend-icon="mdi-chat" value="chat" title="Chat"></v-list-item>
-      <v-list-item prepend-icon="mdi-calendar" value="calendar" title="Calendar"></v-list-item>
+      <v-list-item to="/" exact prepend-icon="mdi-home" value="home" title="Dashboard"></v-list-item>
+      <v-list-item to="/media" prepend-icon="mdi-folder-multiple-image" value="media" title="Media"></v-list-item>
+      <v-list-item to="/chat" prepend-icon="mdi-chat" value="chat" title="Chat"></v-list-item>
+      <v-list-item to="/Calendar" prepend-icon="mdi-calendar" value="calendar" title="Calendar"></v-list-item>
 
       <v-list-group value="Invoice">
         <template v-slot:activator="{ props }">
@@ -62,40 +61,31 @@
       </v-list-group>
     </v-list>
   </v-navigation-drawer>
-  </aside>
 </template>
 
 <script>
 export default {
-  name : 'App',
-  data: () => ({
-    open: [],
-
-    invoice: [
-      ['Management'],
-      ['Settings'],
-    ],
-    user: [
-      ['List'],
-      ['View'],
-    ],
-    roles: [
-      ['Roles'],
-      ['Permissions'],
-    ],
-  }),
-  methods: {
-    closeOtherGroups(currentGroup) {
-      const otherGroups = ['Users', 'Admin', 'Actions'].filter(
-        group => group !== currentGroup
-      );
-      this.open = this.open.filter(group => otherGroups.includes(group));
-    },
+  name: 'AppBar',
+  data() {
+    return {
+      open: [],
+      invoice: [
+        ['Management'],
+        ['Settings'],
+      ],
+      user: [
+        ['List'],
+        ['View'],
+      ],
+      roles: [
+        ['Roles'],
+        ['Permissions'],
+      ],
+    };
   },
 };
 </script>
 
 <style lang="scss" scoped>
-
 
 </style>

@@ -31,7 +31,19 @@
       <SalesChart :series="chartDataB" :totalValue="weeklyTotal" title="Weekly Sales" category-type="weekly" chartType="bar"/>
     </v-col>
     <v-col cols="12" lg="6">
-      <TimelineCard/>
+      <TimelineCard title="Activity Timeline"/>
+    </v-col>
+    <v-col cols="12" md="4">
+      <PaymentCard 
+       title="Upgrade Your Plan" 
+       text="Please make the payment to start enjoying all the features of our premium plan as soon as possible."
+       icon="mdi-briefcase-variant"
+       label="Platinum"
+       caption="Upgrade Plan"
+       planPrice="5250"
+       duration="year"
+       subtitle="Payment Details"
+       />
     </v-col>
   </v-row>
 </template>
@@ -42,6 +54,7 @@ import RatingCard from "@/components/RatingCard.vue";
 import SalesChart from "@/components/charts/SalesChart.vue";
 import RevenueChart from "@/components/charts/RevenueChart.vue";
 import TimelineCard from "@/components/TimelineCard.vue";
+import PaymentCard from "@/components/PaymentCard.vue";
 
 export default {
   data() {
@@ -50,33 +63,33 @@ export default {
         {
           label: "Sales",
           value: 16500,
-          color: "#9155fe",
+          color: "primary",
           icon: "mdi-chart-timeline-variant",
         },
         {
           label: "Customers",
           value: 20700,
-          color: "#56ca01",
+          color: "success",
           icon: "mdi-account-outline",
         },
         {
           label: "Products",
           value: 30200,
-          color: "#ffb401",
+          color: "yellow",
           icon: "mdi-cellphone-link",
         },
       ],
       productRatingA: 24500,
       percentageA: +30,
       chipA: 'Year of 2021',
-      productRatingB: 2500,
+      productRatingB: 13000,
       percentageB: -30,
       chipB: 'Last Week',
       // Data for Total Sales
       chartDataA: [
         {
           name: 'Sales',
-          data: [300, 300, 200, 3200, 2600, 1000, 3200, 2700, 300, 3200],
+          data: [300, 300, 200, 3200, 2600, 1000, 3200, 2700, 200],
         },
       ],
       // Data for Revenue report
@@ -105,6 +118,7 @@ export default {
     SalesChart,
     RevenueChart,
     TimelineCard,
+    PaymentCard
   },
 };
 </script>

@@ -1,26 +1,45 @@
-// Composables
-import { createRouter, createWebHistory } from 'vue-router'
+import { createRouter, createWebHistory } from 'vue-router';
+
+import DefaultLayout from '@/layouts/default/Default.vue';
+import Home from '@/views/Home.vue';
+import Email from '@/views/Media.vue';
+import Chat from '@/views/Chat.vue';
+import Calendar from '@/views/Calendar.vue';
+
+
 
 const routes = [
   {
     path: '/',
-    component: () => import('@/layouts/default/Default.vue'),
+    component: DefaultLayout,
     children: [
       {
         path: '',
         name: 'Home',
-        // route level code-splitting
-        // this generates a separate chunk (about.[hash].js) for this route
-        // which is lazy-loaded when the route is visited.
-        component: () => import(/* webpackChunkName: "home" */ '@/views/Home.vue'),
+        component: Home,
+      },
+      {
+        path: 'media',
+        name: 'Media',
+        component: Email,
+      },
+      {
+        path: 'chat',
+        name: 'Chat',
+        component: Chat,
+      },
+      {
+        path: 'calendar',
+        name: 'Calendar',
+        component: Calendar,
       },
     ],
   },
-]
+];
 
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
   routes,
-})
+});
 
-export default router
+export default router;

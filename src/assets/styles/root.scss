@@ -1,41 +1,45 @@
 :root {
-
-  --spacing-1: 4px;
-  --spacing-2: 8px;
-  --spacing-3: 12px;
-  --spacing-5: 20px;
-  --spacing-6: 24px;
+  --spacing-1 : 4px;
+  --spacing-2 : 8px;
+  --spacing-3 : 12px;
+  --spacing-5 : 20px;
+  --spacing-6 : 24px;
 
   --font-xxs: 12px;
-  --font-xs: 16px;
-  --font-sm: 25px;
-  --font-md: 30px;
-  --font-lg: 35px;
-  --font-xl: 40px;
+  --font-xs : 16px;
+  --font-sm : 25px;
+  --font-md : 30px;
+  --font-lg : 35px;
+  --font-xl : 40px;
   --font-xxl: 50px;
 
   --weight-500 : 500;
   --weight-400 : 400;
   --weight-300 : 300;
 
-
-  --purple : #9155fe;
+  --purple     : #9155fe;
   --purple-300 : #e4d5ff;
-  --color-light: #f4f5fa;
-  --white : #fff;
+  --green      : #56ca01;
+  --blue       : #16b2ff;
+  --red        : #ff4c51;
+  --yellow     : #ffb401;
+  --white      : #fff;
+  --dark-100   : #f4f5fa;
+  --dark-500   : #89868d;
 }
-$bg-light: var(--color-light);
-$primary : var(--purple);
-$fw-500 : 500;
-$fw-400 : 400;
-$fw-300 : 300;
+$bg-light  : var(--dark-100);
+$primary   : var(--purple);
+$secondary : var(--yellow);
+$fw-500: 500;
+$fw-400: 400;
+$fw-300: 300;
 
 // imports
 @import "mixins.scss";
 @import "sidebar.scss";
 @import "main.scss";
 
-// Vuetify overrides
+// Font sizes
 .font-h1 {
   font-size: var(--font-xxl);
 }
@@ -55,14 +59,29 @@ $fw-300 : 300;
 .font-xs {
   font-size: var(--font-xxs);
 }
-
-
-.fw-500{
+// Font weights
+.fw-500 {
   font-weight: 500;
 }
-.fw-400{
+.fw-400 {
   font-weight: 400;
 }
-.fw-300{
+.fw-300 {
   font-weight: 300;
+}
+// Shadows
+.shadow-light {
+  @include box-shadow-light;
+}
+.shadow-medium {
+  @include box-shadow-medium;
+}
+
+// Avatar heights
+.avatar-sm {
+  @include avatar-sm;
+}
+
+//img styling
+.cover {
 }

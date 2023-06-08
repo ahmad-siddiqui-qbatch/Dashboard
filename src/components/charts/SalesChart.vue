@@ -89,7 +89,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '@/assets/styles/root.scss';
 
 .v-card {
   width: 100%;

@@ -9,10 +9,10 @@
       >
         <div class="d-flex align-center">
           <v-avatar
-            class="d-flex align-center card-box-icon"
+            class="d-flex align-center card-box-icon shadow-light"
             size="50"
             rounded
-            :style="{ backgroundColor: transaction.color }"
+            :color=" transaction.color "
           >
             <span :class="['mdi', transaction.icon]"></span>
           </v-avatar>
