@@ -17,7 +17,7 @@
             <span :class="['mdi', transaction.icon]"></span>
           </v-avatar>
           <div class="d-flex flex-column ms-2">
-            <span class="xs">{{ transaction.label }}</span>
+            <span class="font-xs">{{ transaction.label }}</span>
             <span class="font-h5">{{ formattedValue(transaction.value) }}</span>
           </div>
         </div>
